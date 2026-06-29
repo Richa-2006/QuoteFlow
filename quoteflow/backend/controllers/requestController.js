@@ -11,7 +11,8 @@ const createRequest = async (req, res) => {
       description,
       budget,
     });
-    await request.populate(['clientId', 'vendorId'], 'name email businessName');
+    await request.populate('clientId', 'name email');
+    await request.populate('vendorId', 'name email businessName');
     res.status(201).json(request);
   } catch (error) {
     res.status(500).json({ message: error.message });
