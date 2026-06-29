@@ -13,8 +13,8 @@ const createQuote = async (req, res) => {
     const { items, taxRate } = req.body;
     const quote = await Quote.create({
       requestId: request._id,
-      vendorId:  req.user._id,
-      clientId:  request.clientId,
+      vendorId: req.user._id,
+      clientId: request.clientId,
       items,
       taxRate: taxRate || 0,
     });
@@ -23,7 +23,10 @@ const createQuote = async (req, res) => {
     request.status = 'quoted';
     await request.save();
 
-    await quote.populate(['vendorId', 'clientId'], 'name email businessName');
+    await quote.populate([
+      { path: 'vendorId', select: 'name businessName email' },
+      { path: 'clientId', select: 'name email' }
+    ]);
     res.status(201).json(quote);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -79,7 +82,7 @@ const updateQuote = async (req, res) => {
     }
 
     const { items, taxRate } = req.body;
-    if (items)   quote.items   = items;
+    if (items) quote.items = items;
     if (taxRate !== undefined) quote.taxRate = taxRate;
     quote.status = 'sent';
     quote.revisionNote = '';
