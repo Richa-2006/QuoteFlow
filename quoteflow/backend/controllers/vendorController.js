@@ -7,6 +7,8 @@ const getVendors = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const skip  = (page - 1) * limit;
 
+
+    
     const query = { role: 'vendor' };
     if (req.query.category) query.category = new RegExp(req.query.category, 'i');
     if (req.query.search)   query.businessName = new RegExp(req.query.search, 'i');

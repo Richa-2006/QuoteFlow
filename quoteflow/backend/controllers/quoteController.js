@@ -10,6 +10,8 @@ const createQuote = async (req, res) => {
       return res.status(403).json({ message: 'Access denied' });
     }
 
+
+
     const { items, taxRate } = req.body;
     const quote = await Quote.create({
       requestId: request._id,
