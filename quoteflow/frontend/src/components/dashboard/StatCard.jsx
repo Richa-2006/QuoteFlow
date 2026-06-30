@@ -5,6 +5,7 @@ export default function StatCard({ label, value, color = 'blue' }) {
     green:  'bg-green-50 border-green-200 text-green-700',
     gray:   'bg-gray-50 border-gray-200 text-gray-700',
   };
+  
   return (
     <div className={`border rounded-xl p-5 ${colors[color]}`}>
       <p className="text-sm font-medium opacity-70">{label}</p>

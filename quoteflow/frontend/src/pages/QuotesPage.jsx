@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 
 const emptyItem = { name: '', quantity: 1, unitPrice: 0 };
 
+
 export default function QuotesPage() {
   const { user } = useAuth();
   const [searchParams] = useSearchParams();

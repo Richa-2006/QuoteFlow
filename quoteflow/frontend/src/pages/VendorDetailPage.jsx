@@ -5,6 +5,7 @@ import api from '../api/axios';
 
 const emptyItem = { name: '', quantity: 1, unit: 'pcs' };
 
+
 export default function VendorDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();

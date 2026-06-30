@@ -4,6 +4,7 @@ import Navbar from '../components/dashboard/Navbar';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
 
+
 export default function InvoicesPage() {
   const { user } = useAuth();
   const [invoices, setInvoices] = useState([]);
